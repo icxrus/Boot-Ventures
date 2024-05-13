@@ -9,6 +9,7 @@ public class KickBall : MonoBehaviour
     private InputAction leftClick;
     private bool leftClickDown;
     private bool clicked;
+    public bool isKicking;
 
     [SerializeField]
     private float holdDownTime;
@@ -21,16 +22,18 @@ public class KickBall : MonoBehaviour
         leftClick = controls.actions["Click"];
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            if (false)
+            if (!isKicking)
             {
-                Vector3 tpPos = collision.gameObject.transform.position;
-                Quaternion tpRot = collision.gameObject.transform.rotation;
+                isKicking = true;
+                Vector3 tpPos = collision.gameObject.GetComponentInChildren(typeof(Transform)).transform.position;
+                Quaternion tpRot = collision.gameObject.GetComponentInChildren(typeof(Transform)).transform.rotation;
 
                 transform.SetPositionAndRotation(tpPos, tpRot);
+                
                 //Teleport to kick location and allow kick to happen
             }
         }
@@ -41,12 +44,16 @@ public class KickBall : MonoBehaviour
         //Check for holding down of Left Click
         leftClick.performed += _ => leftClickDown = true;
         leftClick.canceled += _ => leftClickDown = false;
-        
-        TimeClickHoldDown();
 
-        if (!leftClickDown && clicked)
+        if (isKicking)
         {
-            VelocityCalculationUponButtonPressdown();
+            TimeClickHoldDown();
+
+            if (!leftClickDown && clicked)
+            {
+                VelocityCalculationUponButtonPressdown();
+            }
+            isKicking = false;
         }
     }
 
