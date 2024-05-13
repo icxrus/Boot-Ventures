@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ApplyVelocityToRigidbody : MonoBehaviour
@@ -16,8 +14,17 @@ public class ApplyVelocityToRigidbody : MonoBehaviour
     {
         if (ballVelocity != Vector3.zero)
         {
-            rb.velocity = ballVelocity;
+            rb.AddForce(ballVelocity, ForceMode.Impulse);
         }
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ballVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
+            transform.position = Vector3.up;
+        }
+#endif
     }
 
     public void ReceiveRbVelocityFromKick(Vector3 velocity)
