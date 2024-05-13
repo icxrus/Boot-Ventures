@@ -21,12 +21,27 @@ public class KickBall : MonoBehaviour
         leftClick = controls.actions["Click"];
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            if (false)
+            {
+                Vector3 tpPos = collision.gameObject.transform.position;
+                Quaternion tpRot = collision.gameObject.transform.rotation;
+
+                transform.SetPositionAndRotation(tpPos, tpRot);
+                //Teleport to kick location and allow kick to happen
+            }
+        }
+    }
+
     private void Update()
     {
         //Check for holding down of Left Click
         leftClick.performed += _ => leftClickDown = true;
         leftClick.canceled += _ => leftClickDown = false;
-
+        
         TimeClickHoldDown();
 
         if (!leftClickDown && clicked)
@@ -35,7 +50,6 @@ public class KickBall : MonoBehaviour
         }
     }
 
-    //Create function to create velocity based on time pressing down a button to kick the ball and pass it to ApplyVelocityToRigidbody
     private void VelocityCalculationUponButtonPressdown()
     {
         switch (holdDownTime)
