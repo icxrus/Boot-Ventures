@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/MapLayoutPlaning.unity
+    guid: 689cab456e4b2f74387d9959b8e5d8e3
   m_configObjects: {}
