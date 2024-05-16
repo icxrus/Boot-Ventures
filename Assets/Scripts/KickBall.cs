@@ -21,25 +21,19 @@ public class KickBall : MonoBehaviour
         controls = GetComponent<PlayerInput>();
         leftClick = controls.actions["Click"];
     }
-
-    private void OnTriggerEnter(Collider collision)
+    
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
             if (!isKicking)
             {
                 isKicking = true;
-                Vector3 tpPos = collision.gameObject.GetComponentInChildren(typeof(Transform)).transform.position;
-                Quaternion tpRot = collision.gameObject.GetComponentInChildren(typeof(Transform)).transform.rotation;
-
-                transform.SetPositionAndRotation(tpPos, tpRot);
-                
-                //Teleport to kick location and allow kick to happen
             }
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //Check for holding down of Left Click
         leftClick.performed += _ => leftClickDown = true;
@@ -102,8 +96,8 @@ public class KickBall : MonoBehaviour
 
     private void FinalizeVelocity()
     {
-        Vector3 velocity = new();
-        velocity.z = kickStrength * holdDownTime;
+        Vector3 velocity = new Vector3(transform.position.x - velocityToRigidbody.transform.position.x,0, transform.position.z - velocityToRigidbody.transform.position.z);
+        velocity *= -kickStrength; // * holdDownTime;
         velocityToRigidbody.ReceiveRbVelocityFromKick(velocity);
         clicked = false;
         holdDownTime = 0f;

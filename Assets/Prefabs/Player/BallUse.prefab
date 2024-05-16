@@ -26,17 +26,17 @@ PrefabInstance:
     - target: {fileID: 4055318388541348005, guid: 7fcccfb29cea591419ad975ba3249b12,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.546908
       objectReference: {fileID: 0}
     - target: {fileID: 4055318388541348005, guid: 7fcccfb29cea591419ad975ba3249b12,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4055318388541348005, guid: 7fcccfb29cea591419ad975ba3249b12,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.0409584
       objectReference: {fileID: 0}
     - target: {fileID: 4055318388541348005, guid: 7fcccfb29cea591419ad975ba3249b12,
         type: 3}
@@ -78,7 +78,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallUse
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4426690007411701519, guid: 7fcccfb29cea591419ad975ba3249b12, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
