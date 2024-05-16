@@ -29,12 +29,6 @@ public class KickBall : MonoBehaviour
             if (!isKicking)
             {
                 isKicking = true;
-                Vector3 tpPos = collision.gameObject.GetComponentInChildren(typeof(Transform)).transform.position;
-                Quaternion tpRot = collision.gameObject.GetComponentInChildren(typeof(Transform)).transform.rotation;
-
-                transform.SetPositionAndRotation(tpPos, tpRot);
-                
-                //Teleport to kick location and allow kick to happen
             }
         }
     }
