@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -312,7 +312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367481099}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04400298, y: 0.85617536, z: -0.07394803, w: 0.5094695}
+  m_LocalRotation: {x: -0.018575357, y: 0.85879576, z: 0.031216312, w: 0.5110288}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -645,7 +645,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939701607}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06248038, y: 0.85292417, z: -0.104999736, w: 0.50753486}
+  m_LocalRotation: {x: -1e-45, y: 0.8593629, z: 3e-45, w: 0.51136625}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -740,7 +740,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074874085}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.053238254, y: 0.85469294, z: -0.08946813, w: 0.5085874}
+  m_LocalRotation: {x: -0.00930149, y: 0.85922074, z: 0.01563137, w: 0.51128167}
   m_LocalPosition: {x: -0.12659359, y: 2.03, z: 1.9080367}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1014,7 +1014,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462757095}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.053238254, y: 0.85469294, z: -0.08946812, w: 0.5085874}
+  m_LocalRotation: {x: -0.00930149, y: 0.85922074, z: 0.015631372, w: 0.51128167}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1398,6 +1398,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1074874087}
+    - target: {fileID: 2043215470252763781, guid: 9b9b2e47ce35dc44eabbe63c180da463,
+        type: 3}
+      propertyPath: basicMovementSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4517142776254045509, guid: 9b9b2e47ce35dc44eabbe63c180da463,
         type: 3}
       propertyPath: m_Name

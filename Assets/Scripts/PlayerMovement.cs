@@ -10,13 +10,13 @@ public class PlayerMovement : MonoBehaviour
     private InputAction moveAction;
 
     private Transform cameraTransform;
-    private float rotationSpeed = 0.2f;
-    private float basicMovementSpeed = 3f;
+    [SerializeField] private float rotationSpeed = 0.2f;
+    [SerializeField] private float basicMovementSpeed = 3f;
 
     private Vector2 input;
     private Vector3 move;
 
-    private float smoothingTime = 0.15f;
+    [SerializeField] private float smoothingTime = 0.15f;
     private Vector2 blendFactor;
 
     private Vector2 currentVelocity;
@@ -36,9 +36,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+            input = moveAction.ReadValue<Vector2>();
         if (!kickBall.isKicking)
         {
-            input = moveAction.ReadValue<Vector2>();
             blendFactor = Vector2.SmoothDamp(blendFactor, input, ref currentVelocity, smoothingTime);
             Vector3 _lastInput = input;
 
