@@ -33,7 +33,7 @@ public class KickBall : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //Check for holding down of Left Click
         leftClick.performed += _ => leftClickDown = true;
@@ -47,7 +47,7 @@ public class KickBall : MonoBehaviour
             {
                 VelocityCalculationUponButtonPressdown();
             }
-            isKicking = false;
+            
         }
     }
 
@@ -57,22 +57,22 @@ public class KickBall : MonoBehaviour
         {
             case <= 1:
                 Debug.Log("bad");
-                kickStrength = 1.2f;
+                kickStrength = 0.2f;
                 FinalizeVelocity();
                 return;
             case > 1 and <= 1.5f:
                 Debug.Log("Decent");
-                kickStrength = 1.7f;
+                kickStrength = 0.7f;
                 FinalizeVelocity();
                 return;
             case > 1.5f and <= 2.5f:
                 Debug.Log("OK");
-                kickStrength = 2.5f;
+                kickStrength = 1.5f;
                 FinalizeVelocity();
                 return;
             case > 2.5f and <= 3f:
                 Debug.Log("Great");
-                kickStrength = 3.2f;
+                kickStrength = 2.2f;
                 FinalizeVelocity();
                 return;
             default:
@@ -92,14 +92,16 @@ public class KickBall : MonoBehaviour
             holdDownTime += Time.deltaTime;
             clicked = true;
         }
+        isKicking = false;
     }
 
     private void FinalizeVelocity()
     {
-        Vector3 velocity = new Vector3(transform.position.x - velocityToRigidbody.transform.position.x,0, transform.position.z - velocityToRigidbody.transform.position.z);
-        velocity *= -kickStrength; // * holdDownTime;
+        Vector3 velocity = new();
+        velocity.z = kickStrength * holdDownTime * Time.deltaTime;
         velocityToRigidbody.ReceiveRbVelocityFromKick(velocity);
         clicked = false;
         holdDownTime = 0f;
+        isKicking = false;
     }
 }

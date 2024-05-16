@@ -5,12 +5,15 @@ public class ApplyVelocityToRigidbody : MonoBehaviour
     Rigidbody rb;
     Vector3 ballVelocity;
 
+    private PlayerMovement playerMovement;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody>();   
+        rb = GetComponent<Rigidbody>();
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (ballVelocity != Vector3.zero)
         {
@@ -30,5 +33,12 @@ public class ApplyVelocityToRigidbody : MonoBehaviour
     public void ReceiveRbVelocityFromKick(Vector3 velocity)
     {
         ballVelocity = velocity;
+        transform.rotation = playerMovement.PlayerRotation();
+    }
+
+    public void StopBallMovement()
+    {
+        ballVelocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
     }
 }
