@@ -37,8 +37,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
             input = moveAction.ReadValue<Vector2>();
-        if (!kickBall.isKicking)
-        {
             blendFactor = Vector2.SmoothDamp(blendFactor, input, ref currentVelocity, smoothingTime);
             Vector3 _lastInput = input;
 
@@ -54,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
             float targetAngle = cameraTransform.eulerAngles.y;
             Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        if (!kickBall.isKicking)
+        {
         }
     }
 }
